@@ -13,7 +13,7 @@ NAME = philo
 all: $(NAME)
 	
 $(NAME) : $(OBJS)
-		$(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS)	$(OBJS) -o $(NAME)
 
 $(OBJS) : philo.h
 
