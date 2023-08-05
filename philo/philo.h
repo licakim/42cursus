@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 21:55:54 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/03 20:17:06 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/05 22:14:16 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		check_full_status(t_philo *philos, t_info *info);
 void	monitoring(t_philo *philos, t_info *info);
 int		simulate(t_philo *philos, t_info *info);
 void	detach(t_philo *philos, int n);
-
+void	philo_action(int action_time);
 
 
 #endif

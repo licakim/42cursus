@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:49:03 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/03 20:10:28 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/05 22:21:52 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	philo_sleep(t_philo *philo)
 {
 	print_philo_state(SLEEP, philo);
-	usleep(1000 * philo->info->time_to_sleep);
+	philo_action(philo->info->time_to_sleep);
 }
 
 void	philo_think(t_philo *philo)
@@ -42,7 +42,7 @@ void	philo_eat(t_philo *philo)
 	}
 	pthread_mutex_unlock(&(philo->event));
 	print_philo_state(EAT, philo);
-	usleep(1000 * philo->info->time_to_eat);
+	philo_action(philo->info->time_to_eat);
 	*(philo->r_fork) = 0;
 	pthread_mutex_unlock(philo->m_r_fork);
 	*(philo->l_fork) = 0;

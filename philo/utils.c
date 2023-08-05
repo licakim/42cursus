@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:50:29 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/03 19:55:13 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/05 22:15:42 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,14 @@ int	check_arg(int argc, char *argv[])
 		i++;
 	}
 	return (SUCCESS);
+}
+
+void	philo_action(int action_time)
+{
+	time_t	start_time;
+
+	start_time = get_current_time();
+
+	while (get_current_time() - start_time < action_time)
+		usleep(200);
 }

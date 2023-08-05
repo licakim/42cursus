@@ -1,7 +1,7 @@
 CC=cc
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror -g3 -fsanitize=thread
 
-SRCS = philo.c ft_atoi.c
+SRCS = philo.c ft_atoi.c init.c monitoring.c print_state.c simulate.c utils.c
 
 OBJS=$(SRCS:.c=.o)
 
@@ -17,7 +17,8 @@ $(NAME) : $(OBJS)
 
 $(OBJS) : philo.h
 
-clean : rm -f $(OBJS)
+clean : 
+	rm -f $(OBJS)
 	
 fclean : clean
 	rm -f $(NAME)
