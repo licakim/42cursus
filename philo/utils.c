@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:50:29 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/05 22:15:42 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:24:35 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,31 @@ void	philo_action(int action_time)
 	time_t	start_time;
 
 	start_time = get_current_time();
-
 	while (get_current_time() - start_time < action_time)
 		usleep(200);
+}
+
+int	ft_atoi(const char *str)
+{
+	long long	result;
+	int			countm;
+
+	result = 0;
+	countm = 1;
+	while ((9 <= *str && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			countm = -countm;
+		str++;
+	}
+	while (*str)
+	{
+		if (!(*str >= 48 && *str <= 57))
+			return (0);
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (countm * result);
 }

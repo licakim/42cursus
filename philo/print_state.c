@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:55:18 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/05 22:47:45 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:17:24 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	print_philo_state(int state_n, t_philo *philo)
 		"is thinking",
 		"died",
 	};
-	//시간 섞여 죽오
+
+	pthread_mutex_lock(&(philo->status->m_die_status));
 	c_t = get_current_time() - philo->start_t;
 	printf("%ld %d %s\n", c_t, philo->num, state_m[state_n]);
+	pthread_mutex_unlock(&(philo->status->m_die_status));
 }

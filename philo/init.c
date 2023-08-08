@@ -6,14 +6,17 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:46:48 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/05 21:32:34 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:33:25 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"philo.h"
 
-void	init_info_status(t_info *info, t_status *status, char *argv[], int argc)
+int	init_info_status(t_info *info, t_status **status, char *argv[], int argc)
 {
+	*status = malloc(sizeof(t_status));
+	if (!(*status))
+		return (MALLOC_ERROR);
 	info -> p_num = ft_atoi(argv[1]);
 	info -> time_to_die = ft_atoi(argv[2]);
 	info -> time_to_eat = ft_atoi(argv[3]);
@@ -22,8 +25,9 @@ void	init_info_status(t_info *info, t_status *status, char *argv[], int argc)
 		info -> max_num = ft_atoi(argv[5]);
 	else
 		info -> max_num = -1;
-	status -> die_status = 0;
-	status -> full_status = 0;
+	(*status)->die_status = 0;
+	(*status)->full_status = 0;
+	return (SUCCESS);
 }
 
 int	init_philos(t_philo **philos, t_info *info, t_status *status)
@@ -50,17 +54,16 @@ int	init_philos(t_philo **philos, t_info *info, t_status *status)
 	return (SUCCESS);
 }
 
-//뮤텍스 객체 파기 
-int	init_mutex(t_philo *philos, t_info *info, t_status *status)
+int	init_mutex(t_philo *philos)
 {
 	int	i;
 
 	i = 0;
-	if (pthread_mutex_init(&(status->m_die_status), NULL) == -1)
+	if (pthread_mutex_init(&(philos->status->m_die_status), NULL) == -1)
 		return (MUTEX_ERROR);
-	if (pthread_mutex_init(&(status->m_full_status), NULL) == -1)
+	if (pthread_mutex_init(&(philos->status->m_full_status), NULL) == -1)
 		return (MUTEX_ERROR);
-	while (i < info -> p_num)
+	while (i < philos->info -> p_num)
 	{
 		if (pthread_mutex_init(&(philos[i].m_fork), NULL) == -1)
 			return (MUTEX_ERROR);

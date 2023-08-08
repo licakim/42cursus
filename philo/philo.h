@@ -6,14 +6,14 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 21:55:54 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/05 22:14:16 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/08 19:17:14 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# define INT_MAX 2147483647 
+# define INT_MAX 2147483647
 
 # include<time.h>
 # include<pthread.h>
@@ -21,7 +21,6 @@
 # include<stdlib.h>
 # include<stdio.h>
 # include <sys/time.h>
-
 
 enum	e_status{
 	SUCCESS,
@@ -76,10 +75,10 @@ typedef struct s_philo
 
 int		ft_atoi(const char *str);
 int		check_arg(int argc, char *argv[]);
-void	init_info_status(t_info *info, \
-				t_status *status, char *argv[], int argc);
+int		init_info_status(t_info *info, \
+				t_status **status, char *argv[], int argc);
 int		init_philos(t_philo **philos, t_info *info, t_status *status);
-int		init_mutex(t_philo *philos, t_info *info, t_status *status);
+int		init_mutex(t_philo *philos);
 void	print_philo_state(int state_n, t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);
@@ -93,6 +92,5 @@ void	monitoring(t_philo *philos, t_info *info);
 int		simulate(t_philo *philos, t_info *info);
 void	detach(t_philo *philos, int n);
 void	philo_action(int action_time);
-
 
 #endif

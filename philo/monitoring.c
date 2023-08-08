@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:51:45 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/05 22:48:02 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/08 20:18:40 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ int	check_die_status(t_philo *philos, t_info *info)
 	{
 		pthread_mutex_lock(&(philos[n].event));
 		starve_t = get_current_time() - philos[n].last_meal_t;
-		pthread_mutex_unlock(&(philos[n].event));
 		if (starve_t >= info->time_to_die)
 		{
 			pthread_mutex_lock(&(philos->status->m_die_status));
 			philos->status->die_status = 1;
-			pthread_mutex_unlock(&(philos->status->m_die_status));
-			print_philo_state(DIE, &philos[n]);
+			printf("%ld %d died", \
+					get_current_time() - philos[n].start_t, philos[n].num);
 			return (1);
 		}
+		pthread_mutex_unlock(&(philos[n].event));
 		n++;
 	}
 	return (0);
@@ -43,7 +43,7 @@ int	check_full_status(t_philo *philos, t_info *info)
 	pthread_mutex_lock(&(philos->status->m_full_status));
 	full_philo = philos->status->full_status;
 	pthread_mutex_unlock(&(philos->status->m_full_status));
-	if (full_philo == info->p_num)
+	if (philos->status->full_status == info->p_num)
 		return (1);
 	return (0);
 }

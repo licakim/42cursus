@@ -1,7 +1,7 @@
 CC=cc
-CFLAGS= -Wall -Wextra -Werror -g3 -fsanitize=thread
+CFLAGS= -Wall -Wextra -Werror
 
-SRCS = philo.c ft_atoi.c init.c monitoring.c print_state.c simulate.c utils.c
+SRCS = philo.c init.c monitoring.c print_state.c simulate.c utils.c
 
 OBJS=$(SRCS:.c=.o)
 
