@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:50:29 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/08 19:24:35 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/14 14:54:33 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_arg(int argc, char *argv[])
 	while (i < argc)
 	{
 		n = ft_atoi(argv[i]);
-		if (n <= 0 || n >= INT_MAX)
+		if (n == -1)
 			return (INPUT_ERROR);
 		i++;
 	}
@@ -77,9 +77,12 @@ int	ft_atoi(const char *str)
 	while (*str)
 	{
 		if (!(*str >= 48 && *str <= 57))
-			return (0);
+			return (-1);
 		result = result * 10 + (*str - '0');
 		str++;
 	}
-	return (countm * result);
+	result *= countm;
+	if (result <= 0 || result >= INT_MAX)
+		return (-1);
+	return (result);
 }

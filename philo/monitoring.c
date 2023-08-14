@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:51:45 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/08/08 20:18:40 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/14 14:55:44 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_full_status(t_philo *philos, t_info *info)
 	pthread_mutex_lock(&(philos->status->m_full_status));
 	full_philo = philos->status->full_status;
 	pthread_mutex_unlock(&(philos->status->m_full_status));
-	if (philos->status->full_status == info->p_num)
+	if (full_philo == info->p_num)
 		return (1);
 	return (0);
 }
