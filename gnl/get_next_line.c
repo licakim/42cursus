@@ -6,7 +6,7 @@
 /*   By: hyunjki2 <hyunjki2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 22:30:21 by hyunjki2          #+#    #+#             */
-/*   Updated: 2023/02/14 13:42:21 by hyunjki2         ###   ########.fr       */
+/*   Updated: 2023/08/14 12:51:28 by hyunjki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,21 @@ char	*get_next_line(int fd)
 	free(s);
 	s = 0;
 	return (line);
+}
+
+#include <fcntl.h>
+#include <stdio.h>
+int main(int argc, char *argv[])
+{
+	int fd = open(argv[1], O_RDONLY);
+	char *str = get_next_line(fd);
+	printf("%s", str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	str = get_next_line(fd);
+	printf("%s", str);
 }
