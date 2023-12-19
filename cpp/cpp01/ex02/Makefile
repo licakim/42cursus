@@ -1,16 +1,16 @@
-CXX = g++
-CFLAGS=-Wall -Wextra -Werror
-SRCS = megaphone.cpp
+CXX = c++
+CXXFLAGS= -std=c++98 -Wall -Wextra -Werror
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = megaphone
+NAME = brain
 
 .INTERMEDIATE : $(OBJS)
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CXX) $(CFLAGS) $(OBJS) -o ${NAME}
+	$(CXX) $(CXXFLAGS) $(OBJS) -o ${NAME}
 
 clean : 
 	rm -f $(OBJS)
@@ -20,3 +20,5 @@ fclean : clean
 
 re : fclean
 	$(MAKE) all
+
+.PHONY: all clean fclean re

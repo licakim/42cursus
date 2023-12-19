@@ -1,6 +1,6 @@
 
 #include <iostream>
-
+#include <cctype>
 int main(int argc, char *argv[])
 {
 	if (argc == 1)
@@ -11,8 +11,7 @@ int main(int argc, char *argv[])
 		{
 			while(*argv[n])
 			{
-				if(97 <= *argv[n] && *argv[n] <= 122)
-					*argv[n] -=32;
+				*argv[n] =toupper(*argv[n]);
 				std::cout << *argv[n];
 				argv[n]++;
 			}
