@@ -4,7 +4,7 @@ SRCS = Fixed.cpp main.cpp
 DEPS = Fixed.hpp
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = ex00
+NAME = ex01
 
 .INTERMEDIATE : $(OBJS)
 

@@ -1,5 +1,5 @@
 #include "PhoneBook.hpp" 
-#include<iomanip> 
+#include<iomanip>
 
 PhoneBook::PhoneBook() : num(0), index(0) {}
 PhoneBook::~PhoneBook() {}
@@ -59,10 +59,15 @@ void PhoneBook::add()
 
 void PhoneBook::search()
 {
-		std::cout << std::setw(10) << "index" << "|";
-			std::cout << std::setw(10) << "first name" << "|";
-			std::cout << std::setw(10) << "last name" << "|";
-				std::cout << std::setw(10) << "nick name" << std::endl;
+	if(num == 0)
+	{
+		std::cout<<"*** empty phonebook ***"<<std::endl;
+		return ;
+	}
+	std::cout << std::setw(10) << "index" << "|";
+	std::cout << std::setw(10) << "first name" << "|";
+	std::cout << std::setw(10) << "last name" << "|";
+	std::cout << std::setw(10) << "nick name" << std::endl;
 	for(int i = 0; i < num && i < 8; i++)
 		{
 			std::cout << std::setw(10) << i << "|";

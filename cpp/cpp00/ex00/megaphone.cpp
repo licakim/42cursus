@@ -1,6 +1,6 @@
-
 #include <iostream>
 #include <cctype>
+
 int main(int argc, char *argv[])
 {
 	if (argc == 1)
@@ -11,8 +11,7 @@ int main(int argc, char *argv[])
 		{
 			while(*argv[n])
 			{
-				*argv[n] =toupper(*argv[n]);
-				std::cout << *argv[n];
+				std::cout << static_cast<char>(toupper(*argv[n]));
 				argv[n]++;
 			}
 		}
